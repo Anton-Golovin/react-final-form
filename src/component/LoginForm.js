@@ -21,6 +21,9 @@ export default function LoginForm() {
     return (
         <Form
             onSubmit={onSubmit}
+            initialValues={{
+                email: 'test@forforce.com',
+            }}
             render={({ handleSubmit }) => (
                 <form className="form" onSubmit={handleSubmit}>
                     <Field
@@ -28,7 +31,7 @@ export default function LoginForm() {
                         name="email" className="input" label="Email" margin="dense"
                     />
                     <Field
-                        component={TextFieldUI} validate={required} name="password"
+                        component={TextFieldUI} initialValue={'11'} validate={required} name="password"
                         className="input" type="password" label="Password" margin="dense"/>
                     <Button className="button" variant="outlined" type="submit">Отправить</Button>
                 </form>
