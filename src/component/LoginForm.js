@@ -24,7 +24,12 @@ export default function LoginForm() {
             initialValues={{
                 email: 'test@forforce.com',
             }}
-            render={({ handleSubmit }) => (
+            mutators={{
+                setNewValue: (args, state, utils) => {
+                    utils.changeValue(state, 'email', () => 'newValue@forforce.com')
+                },
+            }}
+            render={({ handleSubmit, form }) => (
                 <form className="form" onSubmit={handleSubmit}>
                     <Field
                         component={TextFieldUI} validate={composeValidators(required, checkEmail)}
@@ -34,6 +39,7 @@ export default function LoginForm() {
                         component={TextFieldUI} initialValue={'11'} validate={required} name="password"
                         className="input" type="password" label="Password" margin="dense"/>
                     <Button className="button" variant="outlined" type="submit">Отправить</Button>
+                    <Button className="button" variant="outlined" onClick={form.mutators.setNewValue}>Set New Value</Button>
                 </form>
             )}
         />
