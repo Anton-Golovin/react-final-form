@@ -28,12 +28,11 @@ export default function LanguageForm() {
                         <legend>Customers</legend>
                         <FieldArray name="customers">
                             {({fields}) =>
-                                fields.map((name, index) => (
-                                    <div key={name}>
-                                        {console.log(fields)}
-                                        <Field component={TextFieldUI} name="name" className="input" label="Name" margin="dense"/>&nbsp;
-                                        <Field component={TextFieldUI} name="surname" className="input" label="Surname" margin="dense"/>
-                                        <button className="remove">x</button>
+                                fields.map((item, index) => (
+                                    <div key={item}>
+                                        <Field component={TextFieldUI} name={`${item}.name`} className="input" label="Name" margin="dense"/>&nbsp;
+                                        <Field component={TextFieldUI} name={`${item}.surname`} className="input" label="Surname" margin="dense"/>
+                                        <button className="remove" onClick={() => fields.remove(index)}>x</button>
                                     </div>
                                 ))
                             }
